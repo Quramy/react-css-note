@@ -1,0 +1,10 @@
+{
+  "generator-reveal": {
+    "presentationTitle": "How to style React components",
+    "packageVersion": "1.0.0",
+    "useSass": true,
+    "deployToGithubPages": true,
+    "githubUsername": "Quramy",
+    "githubRepository": "react-css-note"
+  }
+}

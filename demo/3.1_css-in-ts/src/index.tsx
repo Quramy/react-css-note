@@ -1,0 +1,12 @@
+import * as React from 'react';
+import { render } from 'react-dom';
+import { Card } from './card';
+
+const title = "React and CSS";
+
+render((
+  <div>
+    <Card title={title}>Hello, Component!</Card>
+    <Card title={title} primary={true}>Hello, Component!</Card>
+  </div>
+), document.getElementById('app'));

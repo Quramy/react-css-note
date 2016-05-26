@@ -1,0 +1,15 @@
+html {
+  padding: 45px 60px;
+  overflow-y: hidden;
+}
+body {
+  color: #606a75;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+

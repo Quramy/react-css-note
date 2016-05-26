@@ -1,0 +1,136 @@
+
+/**
+ * Solarized Light theme for reveal.js.
+ * Author: Achim Staebler
+ */
+
+
+// Default mixins and settings -----------------
+
+@import "../../bower_components/reveal.js/css/theme/template/mixins";
+@import "../../bower_components/reveal.js/css/theme/template/settings";
+// ---------------------------------------------
+
+
+
+// Include theme-specific fonts
+@import url(../../bower_components/reveal.js/lib/font/league-gothic/league-gothic.css);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+
+/**
+ * Solarized colors by Ethan Schoonover
+ */
+html * {
+	color-profile: sRGB;
+	rendering-intent: auto;
+}
+
+// Solarized colors
+$base03:    #002b36;
+$base02:    #073642;
+$base01:    #586e75;
+$base00:    #657b83;
+$base0:     #839496;
+$base1:     #93a1a1;
+$base2:     #eee8d5;
+$base3:     #fdf6e3;
+$yellow:    #b58900;
+$orange:    #cb4b16;
+$red:       #dc322f;
+$magenta:   #d33682;
+$violet:    #6c71c4;
+$blue:      #268bd2;
+$cyan:      #2aa198;
+$green:     #859900;
+
+// Override theme settings (see ../template/settings.scss)
+$mainColor: $base00;
+$headingColor: $base01;
+$headingTextShadow: none;
+$backgroundColor: $base3;
+$linkColor: $blue;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: $magenta;
+
+// Background generator
+// @mixin bodyBackground() {
+// 	@include radial-gradient( rgba($base3,1), rgba(lighten($base3, 20%),1) );
+// }
+
+
+// Theme template ------------------------------
+@import "../../bower_components/reveal.js/css/theme/template/theme";
+// ---------------------------------------------
+
+.reveal .fa {
+  font-family: 'FontAwesome';
+  font-style: normal;
+}
+
+// customize
+.reveal iframe {
+  width: 90%;
+  max-height: 400px;
+  overflow-y: hidden;
+  background-color: #fff;
+  border: 5px dashed $base01;
+}
+
+.reveal pre {
+  font-size: 0.45em;
+}
+
+.reveal code {
+  font-family: "Monaco", "monospace";
+}
+
+.reveal .link {
+  font-style: italic;
+  &.smaller {
+    font-size: smaller;
+  }
+}
+
+.reveal {
+  & a, & p, & span {
+    &.smaller {
+      font-size: smaller;
+    }
+  }
+}
+
+@mixin fa-list {
+  list-style: none;
+  padding-left: 1.4em;
+  li {
+    position: relative;
+    line-height: 1.5em;
+    margin-bottom: 0.5em;
+    &:before {
+      position: absolute;
+      left: -1.4em;
+      display: inline-block;
+      font-family: 'FontAwesome';
+    }
+    &.no-mark:before {
+      display: none;
+    }
+  }
+}
+
+.reveal ul.good {
+  @include fa-list;
+  & li:before {
+    content: '\f00c';
+    color: $green;
+  }
+}
+
+.reveal ul.bad {
+  @include fa-list;
+  & li:before {
+    content: '\f00d';
+    color: $magenta;
+  }
+}

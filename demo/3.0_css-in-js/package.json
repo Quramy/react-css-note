@@ -1,0 +1,22 @@
+{
+  "name": "3.0_css-in-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "babel -d dist src",
+    "bundle": "browserify -d -o dist/bundle.js dist/index.js",
+    "build": "npm run compile && npm run bundle",
+    "start": "npm run build && open index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2"
+  }
+}

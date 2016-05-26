@@ -1,0 +1,29 @@
+{
+  "name": "4.0_css-modules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "browserify -d -o dist/bundle.js -t [ babelify ] -p [ css-modulesify --after postcss-color-rebeccapurple --after autoprefixer --autoprefixer.browsers '> 5%' -o dist/bundle.css ] src/index.js",
+    "build": "npm run bundle",
+    "start": "npm run build && open index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "css-modulesify": "^0.23.0",
+    "postcss-color-rebeccapurple": "^2.0.0",
+    "postcss-modules-extract-imports": "^1.0.0",
+    "postcss-modules-local-by-default": "^1.0.0",
+    "postcss-modules-scope": "^1.0.0",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2"
+  }
+}
