@@ -8,7 +8,8 @@
     "clean": "rimraf dist && mkdirp dist",
     "bundle": "browserify -t [ babelify ] -d -o dist/bundle.js src/index.js",
     "build": "npm run clean && npm run bundle",
-    "start": "npm run build && open index.html"
+    "start": "npm run build && open index.html",
+    "dist": "npm run build && node ../tool/dist.js"
   },
   "keywords": [],
   "author": "",

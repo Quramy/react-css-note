@@ -18,9 +18,25 @@
     "global-evil2.md",
     "css-in-js-intro.html",
     "css-in-js-styles-as-js.md",
+    "css-in-js-how-to-localize.md",
     "css-in-js-styles-extend-assign.md",
     "css-in-js-styles-extend-other-pros.md",
     "css-in-js-cons.md",
     "css-in-js-libs.md",
-    "css-in-js-libs-comparison.md"
+    "css-in-js-libs-comparison.md",
+    [
+        "css-in-js-radium-sample010-html.html",
+        "css-in-js-radium-sample020-md.md"
+    ],
+    "css-modules-intro.md",
+    [
+        "css-modules-basic010.md",
+        "css-modules-basic020.md",
+        "css-modules-basic030.md"
+    ],
+    "css-modules-how-to-localize.md",
+    "css-modules-composes.md",
+    "css-modules-with-browserify.md",
+    "css-modules-with-webpack.md",
+    "css-modules-postcss-with-ejb.md"
 ]

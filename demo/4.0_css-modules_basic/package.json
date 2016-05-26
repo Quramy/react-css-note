@@ -1,13 +1,14 @@
 {
-  "name": "4.0_css-modules",
+  "name": "4.0_css-modules_basic",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist && mkdirp dist",
     "bundle": "browserify -d -o dist/bundle.js -t [ babelify ] -p [ css-modulesify --after postcss-color-rebeccapurple --after autoprefixer --autoprefixer.browsers '> 5%' -o dist/bundle.css ] src/index.js",
-    "build": "npm run bundle",
-    "start": "npm run build && open index.html"
+    "build": "npm run clean && npm run bundle",
+    "start": "npm run build && open index.html",
+    "dist": "export NODE_ENV=production && npm run build && node ../tool/dist.js"
   },
   "keywords": [],
   "author": "",
