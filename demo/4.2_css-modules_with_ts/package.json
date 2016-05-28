@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dts": "tcm src",
     "clean": "rimraf dist",
     "build": "npm run clean && webpack",
     "start": "npm run build && open index.html"
