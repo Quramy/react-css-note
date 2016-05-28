@@ -1,0 +1,45 @@
+##  codeSample
+
+<!--
+```js
+import React from "react";
+
+export class Card extends React.Component {
+  render() {
+    const {title, primary, children} = this.props;
+    return (
+      <div className={primary ? 'card--primary' : 'card'} >
+        <header className={primary ? 'card--primary__title' : 'card__title'}>{title}</header>
+        <div className="body">{children}</div>
+      </div>
+    );
+  }
+}
+```
+-->
+
+```css
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #f0f2fb;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
+  margin-bottom: 30px;
+  &__title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.card--primary {
+  @extend .card;
+  &__title {
+    @extend .card__title;
+    font-weight: bold;
+  }
+  background-color: #62c4a4;
+  border: none;
+  color: white;
+}
+```
