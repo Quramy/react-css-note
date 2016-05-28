@@ -6,7 +6,7 @@ const title = "React and CSS";
 
 render((
   <div>
-    <Card title={title}>Hello, Component!</Card>
-    <Card title={title} primary={true}>Hello, Component!</Card>
+    <Card title={title}>Hello, card component!</Card>
+    <Card title={title} primary={true}>Hello, primary card component!</Card>
   </div>
 ), document.getElementById('app'));
