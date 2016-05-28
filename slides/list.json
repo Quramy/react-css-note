@@ -7,6 +7,7 @@
     [
         "global-sample_030_demo.html",
         "global-sample_020_jsx.md",
+        "global-sample_025_use.md",
         "global-sample_010_css.md"
     ],
     "it-is-not-component.md",
@@ -39,5 +40,12 @@
         "css-modules-with-webpack.md"
     ],
     "css-modules-composes.md",
-    "css-modules-postcss-with-ejb.md"
+    "css-modules-postcss-with-ejb.md",
+    "summary-which.md",
+    "summary-which_020.md",
+    "summary-both-you-can-choose.md",
+    "thank-you.md",
+    "appendix.md",
+    "appendix-is-bem-dead.md",
+    "appendix-with-typescript.md"
 ]

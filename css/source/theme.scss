@@ -52,6 +52,13 @@ $backgroundColor: $base3;
 $linkColor: $blue;
 $linkColorHover: lighten( $linkColor, 20% );
 $selectionBackgroundColor: $magenta;
+$headingFont: "liberation_sansregular", "Helvetica";
+$headingTextTransform: none;
+$heading1Size: 2.35em;
+$heading2Size: 2.0em;
+$heading3Size: 1.55em;
+$heading4Size: 1.00em;
+
 
 // Background generator
 // @mixin bodyBackground() {

@@ -1,4 +1,4 @@
-## Local scoped by default
+### Local scoped by default
 
 CSS Modulesでは定義されたClassがES 2015 Modulesのように振る舞う
 
@@ -12,5 +12,7 @@ CSS Modulesでは定義されたClassがES 2015 Modulesのように振る舞う
 export class MyClass {...}
 ```
 
-* `MyClass`を利用する際は明示的に`import`する
-* 他のファイルに同名の`MyClass` が定義されていても干渉しない
+<ul class="good">
+  <li> `MyClass`を利用する際は明示的に`import`する </li>
+  <li>他のファイルに同名の`MyClass` が定義されていても干渉しない</li>
+</ul>

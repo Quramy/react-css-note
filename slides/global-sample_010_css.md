@@ -11,7 +11,6 @@ CSSはこんな感じ？
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
   margin-bottom: 30px;
 }
-
 .card .title {
   font-size: 20px;
   margin-bottom: 10px;
@@ -22,7 +21,6 @@ CSSはこんな感じ？
   border: none;
   color: white;
 }
-
 .card.primary .title {
   font-weight: bold;
 }
