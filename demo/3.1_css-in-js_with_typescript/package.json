@@ -4,17 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist && mkdirp dist",
     "compile": "tsc -p .",
     "bundle": "browserify -d -o dist/bundle.js dist/index.js",
-    "build": "npm run compile && npm run bundle",
+    "build": "npm run clean && npm run compile && npm run bundle",
     "start": "npm run build && open index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "browserify": "^13.0.1",
+    "mkdirp": "^0.5.1",
     "react": "^15.0.2",
-    "react-dom": "^15.0.2"
+    "react-dom": "^15.0.2",
+    "rimraf": "^2.5.2",
+    "typescript": "^1.8.10"
   }
 }
