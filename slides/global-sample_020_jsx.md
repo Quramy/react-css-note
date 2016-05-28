@@ -1,4 +1,4 @@
-### Create Component
+### Create component with JSX
 
 React.Component を使ってComponentを作る:
 

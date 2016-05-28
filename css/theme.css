@@ -293,6 +293,11 @@ body {
   font-family: 'FontAwesome';
   font-style: normal; }
 
+.reveal section img.no-frame {
+  background: none;
+  border: none;
+  box-shadow: none; }
+
 .reveal iframe {
   width: 90%;
   max-height: 400px;

@@ -1,10 +1,4 @@
 
 # How to style React components
 
-From the terminal, pop in:
-
-  ```yo reveal:slide "Slide Title"```
-
-Available options:
-
- ```--markdown --attributes --notes```
+by @Quramy 2016.05.31

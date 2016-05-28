@@ -1,12 +1,9 @@
 [
     "index.md",
     "about-me.md",
-    "component.md",
-    [
-        "codesample.md",
-        "demo-global.html"
-    ],
+    "agenda.md",
     "why-component.md",
+    "component.md",
     [
         "global-sample_030_demo.html",
         "global-sample_020_jsx.md",
@@ -29,14 +26,18 @@
         "css-in-js-radium-sample020-md.md"
     ],
     "css-modules-intro.md",
+    "css-modules-approach.md",
+    "css-modules-how-to-localize.md",
     [
         "css-modules-basic010.md",
         "css-modules-basic020.md",
         "css-modules-basic030.md"
     ],
-    "css-modules-how-to-localize.md",
+    [
+        "css-modules-using-module-bundler.md",
+        "css-modules-with-browserify.md",
+        "css-modules-with-webpack.md"
+    ],
     "css-modules-composes.md",
-    "css-modules-with-browserify.md",
-    "css-modules-with-webpack.md",
     "css-modules-postcss-with-ejb.md"
 ]

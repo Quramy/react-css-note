@@ -1,12 +1,3 @@
-### With webpack
-
-<p class="smaller">
-  webpack公式の<a href="https://github.com/webpack/css-loader#css-modules" target="_blank">css-loader</a>から利用可能 <br>
-`modules` オプションでCSS Modulesとして解釈されるようになる
-</p>
-
-
-```js
 var path = require('path');
 module.exports = {
   module: {
@@ -23,4 +14,3 @@ module.exports = {
   output: { path: path.resolve('dist'), filename: 'bundle.js' },
   resolve: { extensions: ['', '.js'] },
 };
-```

@@ -1,13 +1,16 @@
+## Local scoped by default
 
-CSS ModulesではModule bundlerのプラグインが必須.
+CSS Modulesでは定義されたClassがES 2015 Modulesのように振る舞う
 
-* .cssファイルのClass名を書き換えてglobalな名前が分からないようにする
-* 同時に.jsで利用するkeyと実クラス名の紐付け情報を作成してModule bundlerに引き渡す
+```css
+/* MyClass.css */
+.MyClass { color: red; }
+```
 
 ```js
-/* CSS Modules pluginが生成するmoduleイメージ */
-module.exports = {
-  "root": "_root_gub7p_1",
-  :
-};
+/* MyClass.js */
+export class MyClass {...}
 ```
+
+* `MyClass`を利用する際は明示的に`import`する
+* 他のファイルに同名の`MyClass` が定義されていても干渉しない

@@ -1,4 +1,4 @@
-##  Component?
+##  How to create Component?
 
 多くのJS FrameworkがUI Componentの開発をサポート
 
@@ -20,6 +20,6 @@ Vue.js:
   `View.extend(...)`
 </span>
 </li>
-  <li class="no-mark">and more...</li>
+<li class="no-mark">and more...</li>
 </ul>
 
