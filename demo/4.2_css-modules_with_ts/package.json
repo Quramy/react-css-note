@@ -1,0 +1,26 @@
+{
+  "name": "4.2_css-modules_with_ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && webpack",
+    "start": "npm run build && open index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^6.3.6",
+    "css-loader": "^0.23.1",
+    "postcss-loader": "^0.9.1",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
+    "typed-css-modules": "^0.1.9",
+    "typescript": "^1.8.10",
+    "webpack": "^1.13.1"
+  }
+}

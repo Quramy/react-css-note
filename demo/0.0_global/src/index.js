@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import {Card} from './card';
+import React from "react";
+import {render} from "react-dom";
+import {Card} from "./card";
 
 const title = "React and CSS";
 
-ReactDom.render((
+render((
   <div>
-    <Card title={title}>Hello, Component!</Card>
-    <Card title={title} primary={true}>Hello, Component!</Card>
+    <Card title={title}>Hello, card component!</Card>
+    <Card title={title} primary={true}>Hello, primary card component!</Card>
   </div>
-), document.getElementById('app'));
+), document.getElementById("app"));

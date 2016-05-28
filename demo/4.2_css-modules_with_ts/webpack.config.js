@@ -2,15 +2,14 @@ var path = require("path");
 module.exports = {
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loaders: ["babel-loader"] },
-      // postcssと併用する場合, importLoaders=1が必須
+      { test: /\.tsx?$/, exclude: /node_modules/, loaders: ["ts-loader"] },
       { test: /\.css$/, loaders: ["style", "css?modules&importLoaders=1", "postcss"] },
     ],
   },
   postcss: [
     require("autoprefixer"),
   ],
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: { path: path.resolve("dist"), filename: "bundle.js" },
-  resolve: { extensions: ["", ".js"] },
+  resolve: { extensions: ["", ".js", ".ts", ".tsx"] },
 };
