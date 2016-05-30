@@ -354,3 +354,14 @@ body {
   .reveal ul.bad li:before {
     content: '\f00d';
     color: #d33682; }
+
+.reveal .compare {
+  display: flex; }
+  .reveal .compare .content {
+    flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1; }
+  .reveal .compare.--top {
+    align-items: flex-start; }
+  .reveal .compare.--center {
+    align-items: center; }

@@ -253,7 +253,7 @@ CSSはこんな感じ？
                 
                     
                         
-    <section><h3>It&apos;s complete!</h3>
+    <section><h3>It&apos;s completed!</h3>
 
 <div>
 <iframe src="./resources/demo/0.0_global/index.html" frameborder="0" style="height:330px">
@@ -278,7 +278,9 @@ CSSはこんな感じ？
                         
     <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### CSS is so fragile
 
-スタイル定義は外から簡単に破壊できてしまう
+Style定義はとても壊れやすい
+
+* 外部からComponentのCSSを破壊する例:
 
 ```css
 .card {
@@ -302,7 +304,7 @@ div .card {
                 
                     
                         
-    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">props.childrenが破壊されるケース:
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">* ComponentのCSSが子要素を破壊する例:
 
 ```css
 /* Card Componentの内部利用のために定義された CSS Class */
@@ -330,7 +332,7 @@ function renderCard() {
   <header class="title"></header>
   <div>
     <sectoin class="sub">
-      <!-- Cardが内部的に使っている .card .title のスタイルが適用されてしまう -->
+      <!-- Cardが内部的に使っている .card .title のルールが適用されてしまう -->
       <header class="title">sub title</header>
     </sectoin>
   </div>
@@ -358,7 +360,7 @@ React.Componentを使っただけで <br>
                     
                         
     <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
-CSSがglobalであることが最大の問題
+CSSセレクタがGlobalであることが最大の問題
 </script></section>
 
 
@@ -367,7 +369,7 @@ CSSがglobalであることが最大の問題
                 
                     
                         
-    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Weapon of choice ?
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Weapon of Choice ?
 
 CSSのGlobal性と戦うための武器:
 
@@ -496,12 +498,12 @@ export const primaryRoot = Object.assign({}, root, {
     <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
 ### Other pros
 
-スタイルを.jsで管理するメリット:
+Styleを.jsで管理するメリット:
 
 <ul class="good">
   <li>プロジェクトで共有する変数も.jsで共有可能</li>
-  <li>不要コード検出(e.g. [eslint: no-unused-vars](http://eslint.org/docs/rules/no-unused-vars))</li>
-  <li>動的ロード(e.g. [SystemJS](https://github.com/systemjs/systemjs))</li>
+  <li>不要コード検出(e.g. <a href="http://eslint.org/docs/rules/no-unused-vars" target="_blank">eslint: no-unused-vars</a>)</li>
+  <li>動的ロード(e.g. <a href="https://github.com/systemjs/systemjs" target="_blank">SystemJS</a>)</li>
   <li class="no-mark"><span class="smaller">and more...</span></li>
 </ul>
 
@@ -515,7 +517,7 @@ export const primaryRoot = Object.assign({}, root, {
                         
     <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Cons of inline-style
 
-inline styleに展開する場合、下記が利用できない
+inline-styleに展開する場合、下記が利用できない
 
 <ul class="bad">
   <li>擬似要素セレクタ(e.g. `::before`)</li>
@@ -976,7 +978,7 @@ module.exports = {
                 
                     
                         
-    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Sharing value
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Sharing variables
 
 @value で値を定義すると.js, .cssからimport出来る
 
@@ -1010,15 +1012,15 @@ module.exports = {
                     
                         
     <section><h3>
-  Static convert
+  Offline transformation
 </h3>
 
 <p class="smaller">
-<a href="https://github.com/css-modules/postcss-modules">css-modules/postcss-modules</a> &#x3092;&#x5229;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;<br>CSS Modules&#x306E;&#x4E8B;&#x524D;&#x5909;&#x63DB;&#x304C;&#x53EF;&#x80FD;
+<a href="https://github.com/css-modules/postcss-modules" target="_blank">css-modules/postcss-modules</a> &#x3092;&#x5229;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;<br>CSS Modules&#x306E;&#x4E8B;&#x524D;&#x5909;&#x63DB;&#x304C;&#x53EF;&#x80FD;
 </p>
 
-<div style="display:flex;font-size: 0.8em;align-items:center;">
-<div style="flex:1">
+<div class="compare --center" style="font-size: 0.8em">
+<div class="content">
 <pre><code data-trim="" data-noescape="">/* styles.css */
 .myClass {
   color:red;
@@ -1026,23 +1028,21 @@ module.exports = {
 </code></pre>
 </div>
 
-<p>
-<span class="fa fa-arrow-right" style="font-size:50px"></span>
-</p>
+<p><span class="fa fa-arrow-right" style="font-size:50px"></span></p>
 
-<div style="flex:1">
+<div class="content">
 <pre><code data-trim="" data-noescape="">/* converted_styles.css */
 ._myClass_xxx_yyy {
   color:red;
 }</code></pre>
-<pre><code data-trim="" data-noescape="">// class.json
+<pre><code data-trim="" data-noescape="">// converted_styles.json
 {
   &quot;myClass&quot;: &quot;_myClass_xxx_yyy&quot;
 }</code></pre>
 </div>
 </div>
 
-<p class="smaller">&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;json&#x304B;&#x3089;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;<br>&#x4ED6;&#x8A00;&#x8A9E;(e.g. Rails)&#x304B;&#x3089;&#x3082;CSS Modules&#x3092;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;</p>
+<p class="smaller">&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;json&#x304B;&#x3089;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;<br>&#x4ED6;&#x8A00;&#x8A9E;(e.g. Ruby)&#x304B;&#x3089;&#x3082;CSS Modules&#x3092;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;</p>
 </section>
 
 
@@ -1072,8 +1072,8 @@ CSS in JSとCSS Modules, どっちを使えばいいの？
                     
                         
     <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
-<div style="display:flex">
-<div style="flex:1; font-size:0.75em;">
+<div class="compare">
+<div class="content" style="font-size:0.75em;">
 <h3>CSS in JS</h4>
 
 <ul class="good">
@@ -1089,7 +1089,7 @@ CSS in JSとCSS Modules, どっちを使えばいいの？
 
 <div style="width:30px"></div>
 
-<div style="flex:1; font-size:0.75em;">
+<div class="content" style="font-size:0.75em;">
 <h3>CSS Modules</h4>
 
 <ul class="good">
@@ -1097,7 +1097,7 @@ CSS in JSとCSS Modules, どっちを使えばいいの？
   <li>JavaScript以外の言語からも利用しやすい</li>
 </ul>
 <ul class="bad">
-  <li>Module bundler pluginが必須. ビルドスクリプトが面倒</li>
+  <li>Module bundler pluginやpostcss pluginによる変換が必須</li>
 </ul>
 
 </div>

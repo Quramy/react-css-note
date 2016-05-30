@@ -1,4 +1,4 @@
-### Sharing value
+### Sharing variables
 
 @value で値を定義すると.js, .cssからimport出来る
 
