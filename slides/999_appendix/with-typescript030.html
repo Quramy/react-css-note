@@ -1,0 +1,27 @@
+<p>
+  CSS Modulesから.css.d.tsを生成するツールを作りました
+</p>
+
+<p class="smaller">
+  <a href="https://github.com/Quramy/typed-css-modules" target="_blank"><span class="fa fa-github"></span> Quramy/typed-css-modules</a>
+</p>
+
+<div class="compare --center">
+<div class="content">
+<pre><code data-trim data-noescape>/* Card.css */
+.root { ... }
+
+.title { ... }
+</code></pre>
+</div>
+
+<p> <span class="fa fa-arrow-right" style="font-size:30px"></span> </p>
+
+<div class="content">
+<pre><code data-trim data-noescape>// Card.css.d.ts
+export const root: string;
+
+export const title: string;
+</code></pre>
+</div>
+</div>
