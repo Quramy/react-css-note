@@ -1,4 +1,3 @@
-
 CSS in JSではStyleとなるオブジェクトを直接JSで記述する.
 
 ```js
@@ -12,7 +11,7 @@ export const root = {
   marginBottom: "30px",
 };
 
-:
+// 以下略
 ```
 
 ```js

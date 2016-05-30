@@ -7,7 +7,7 @@
     2016年5月現在, 最も人気のあるCSS in JSライブラリ (~3,000 <span class="fa fa-star"></span>)
   </p>
   <p class="smaller">
-    `h:over`等、いくつかの擬似クラスセレクタをサポート
+    `:hover`等、いくつかの擬似クラスセレクタをサポート
   </p>
 </li>
 <li>
