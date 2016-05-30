@@ -468,7 +468,7 @@ StyleをComponentに閉じ込めることができる
                     
                         
     <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
-JavaScriptの関数を使えば、Styleの合成も簡単。
+JavaScriptの関数を使えば、Styleの合成も容易
 
 ```js
 export const root = {
@@ -599,64 +599,6 @@ inline styleに展開する場合、下記が利用できない
 
                             
                                 
-    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">##  css-in-js-radium-sample020.md
-
-
-```js
-import React from "react";
-import Radium from "radium";
-
-const height = "50px";
-const styles = {
-  root: {
-    position: "relative",
-    width: "100%", height,
-    marginBottom: "15px",
-    ":hover": {
-      opacity: 0.6,
-    },
-  },
-  movable: {
-    position: "absolute",
-    width: "100%",
-    top: 0, bottom: 0,
-  },
-  circle: {
-    backgroundColor: "#62c4a4",
-    width: height, height,
-    borderRadius: "25px",
-  }
-};
-
-const translationKeyframes = Radium.keyframes({
-  "0%":   {transform: "translateX(0%)"},
-  "50%":  {transform: "translateX(100%)"},
-  "100%": {transform: "translateX(0%)"},
-}, "pulse");
-const animation = (delay) =>({
-  animation: `x 2.5s ease ${delay} infinite`,
-  animationName: translationKeyframes,
-});
-
-@Radium
-export class AnimatedCircle extends React.Component {
-  render() {
-    const { delay } = this.props;
-    return (
-      <div style={[styles.root, animation(delay)]}>
-        <div style={styles.movable}>
-          <div style={styles.circle}></div>
-        </div>
-      </div>
-    );
-  }
-}
-```
-</script></section>
-
-
-                            
-                                
     <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Component with Radium
 
 ```js
@@ -678,7 +620,94 @@ export class AnimatedCircle extends React.Component {
 }
 ```
 
-* Class Decorators(ES.next) を ComponentのClassに付与
+<ul>
+  <li>
+    <p class="smaller"><a href="https://github.com/wycats/javascript-decorators/blob/master/README.md" target="_blank">Class Decorators(ES.next)</a>を ComponentのClassに付与</p>
+  </li>
+  <li>
+    <p class="smaller">styleに配列が使えるように拡張される</p>
+  </li>
+  <li>
+    <p class="smaller">styleオブジェクトに":hover"が利用可能に</p>
+  </li>
+</ul>
+</script></section>
+
+
+                            
+                                
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Style object with Radium
+
+```js
+const height = "50px";
+
+// アニメーションの定義
+const translationKeyframes = Radium.keyframes({
+  "0%":   {transform: "translateX(0%)"},
+  "50%":  {transform: "translateX(100%)"},
+  "100%": {transform: "translateX(0%)"},
+}, "pulse");
+const animation = (delay) =>({
+  animation: `x 2.5s ease ${delay} infinite`,
+  animationName: translationKeyframes,
+});
+const styles = {
+  root: {
+    position: "relative",
+    width: "100%", height,
+    marginBottom: "15px",
+    ":hover": { /* :hover時のstyle */
+      opacity: 0.6,
+    },
+  },
+  movable: {
+    position: "absolute",
+    width: "100%",
+    top: 0, bottom: 0,
+  },
+  circle: {
+    backgroundColor: "#62c4a4",
+    width: height, height,
+    borderRadius: "25px",
+  }
+};
+```
+
+<ul>
+  <li>
+    <p class="smaller">Radium.keyframesでアニメーションを定義</p>
+  </li>
+  <li>
+    <p class="smaller">':hover'をkeyとしてstyle定義</p>
+  </li>
+</ul>
+</script></section>
+
+
+                            
+                                
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Wrap components by StyleRoot
+
+```js
+import React from "react";
+import ReactDom from "react-dom";
+import { AnimatedCircle } from "./AnimatedCircle";
+import { StyleRoot } from "radium";
+
+ReactDom.render(
+  <StyleRoot>
+    <AnimatedCircle delay="0s"></AnimatedCircle>
+    <AnimatedCircle delay=".3s"></AnimatedCircle>
+    <AnimatedCircle delay=".6s"></AnimatedCircle>
+  </StyleRoot>
+, document.getElementById("app"));
+```
+
+<ul>
+  <li>
+    <p class="smaller">keyframesを利用するためにはStyleRootでラップするが必要ある</p>
+  </li>
+</ul>
 </script></section>
 
 
@@ -724,7 +753,7 @@ Glen Maddern が2015年に提唱
 CSS in JSが.jsでstyleを生成するのに対して <br>
 CSS Modulesは従来通り.cssを.jsから利用する
 
-<img class="no-frame" src="./resources/images/approach_comparison.png" alt="">
+<img class="no-frame" src="./resources/images/comparison_approach.png" alt="">
 </script></section>
 
 
@@ -828,9 +857,9 @@ CSS Class名が書き換えられているのが確認できる
                         <section>
                             
                                 
-    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### You need module bundler
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Using module bundler
 
-CSS ModulesではModule bundlerのプラグインが必須.
+CSS ModulesではModule bundlerのプラグインを利用する:
 
 * .cssファイルのClass名を書き換えてglobalな名前が分からないようにする
 * 同時に.jsで利用するkeyと実クラス名の紐付け情報を作成してModule bundlerに引き渡す
@@ -948,9 +977,82 @@ module.exports = {
                 
                     
                         
-    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">##  css-modules-postcss-with-ejb
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Sharing value
 
-This is a new Markdown slide
+@value で値を定義すると.js, .cssからimport出来る
+
+```css
+/* shared.css */
+
+@value duration 0.6s;
+```
+
+```css
+/* animatedBall.css */
+
+/* aliasを付けてimport可能 */
+@value duration as bounceDuration from "./animation-values.css";
+
+@keyframes bounce {
+  33% { transform: translateY(-20px); }
+  66% { transform: translateY(0px); }
+}
+
+.bounce {
+  animation: bounce bounceDuration infinite ease-in-out;
+}
+```
+</script></section>
+
+
+                    
+                    
+                
+                    
+                        
+    <section><h3>
+  Static convert
+</h3>
+
+<p class="smaller">
+<a href="https://github.com/css-modules/postcss-modules">css-modules/postcss-modules</a> &#x3092;&#x5229;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;<br>CSS Modules&#x306E;&#x4E8B;&#x524D;&#x5909;&#x63DB;&#x304C;&#x53EF;&#x80FD;
+</p>
+
+<div style="display:flex;font-size: 0.8em;align-items:center;">
+<div style="flex:1">
+<pre><code data-trim="" data-noescape="">/* styles.css */
+.myClass {
+  color:red;
+}
+</code></pre>
+</div>
+
+<p>
+<span class="fa fa-arrow-right" style="font-size:50px"></span>
+</p>
+
+<div style="flex:1">
+<pre><code data-trim="" data-noescape="">/* converted_styles.css */
+._myClass_xxx_yyy {
+  color:red;
+}</code></pre>
+<pre><code data-trim="" data-noescape="">// class.json
+{
+  &quot;myClass&quot;: &quot;_myClass_xxx_yyy&quot;
+}</code></pre>
+</div>
+</div>
+
+<p class="smaller">&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;json&#x304B;&#x3089;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;<br>&#x4ED6;&#x8A00;&#x8A9E;(e.g. Rails)&#x304B;&#x3089;&#x3082;CSS Modules&#x3092;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;</p>
+</section>
+
+
+                    
+                    
+                
+                    
+                        
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## まとめ
 </script></section>
 
 
@@ -977,12 +1079,11 @@ CSS in JSとCSS Modules, どっちを使えばいいの？
 
 <ul class="good">
   <li>単一のJSファイルにテンプレート(JSX)とStyle定義を記述できる</li>
+  <li>JavaScriptの様々なツール(e.g. eslint)がStyleに利用可能</li>
 </ul>
 
 <ul class="bad">
-  <li>h:overやメディアクエリにはライブラリ毎に記法が異なる</li>
-  <li>inline-styleの利用は仮想DOMのパフォーマンスに悪影響があるかも(by <a href="https://github.com/petehunt/jsxstyle#the-problem-with-vjeuxs-solution" target="_blank"> @petehunt </a>)
-</li>
+  <li>:hoverやメディアクエリにはライブラリ毎に記法が異なる</li>
 </ul>
 
 </div>
@@ -1010,11 +1111,9 @@ CSS in JSとCSS Modules, どっちを使えばいいの？
                 
                     
                         
-    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## You can use both
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">現状、優劣は付け難い
 
-現状、優劣は付け難い
-
-「styleを.jsで書きたいか」 「styleを.cssで書きたいか」 <br>
+"**styleを.jsで書きたいか**" or "**styleを.cssで書きたいか**"<br>
 天秤に掛けて決めましょう
 </script></section>
 
@@ -1025,6 +1124,10 @@ CSS in JSとCSS Modules, どっちを使えばいいの？
                     
                         
     <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown"># Thank you!
+
+<p class="smaller">
+  <a href="https://github.com/Quramy/react-css-note"><span class="fa fa-github"></span> https://github.com/Quramy/react-css-note</a>
+</p>
 </script></section>
 
 

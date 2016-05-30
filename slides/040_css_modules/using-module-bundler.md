@@ -1,6 +1,6 @@
-### You need module bundler
+### Using module bundler
 
-CSS ModulesではModule bundlerのプラグインが必須.
+CSS ModulesではModule bundlerのプラグインを利用する:
 
 * .cssファイルのClass名を書き換えてglobalな名前が分からないようにする
 * 同時に.jsで利用するkeyと実クラス名の紐付け情報を作成してModule bundlerに引き渡す

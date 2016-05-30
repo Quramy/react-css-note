@@ -5,12 +5,11 @@
 
 <ul class="good">
   <li>単一のJSファイルにテンプレート(JSX)とStyle定義を記述できる</li>
+  <li>JavaScriptの様々なツール(e.g. eslint)がStyleに利用可能</li>
 </ul>
 
 <ul class="bad">
-  <li>h:overやメディアクエリにはライブラリ毎に記法が異なる</li>
-  <li>inline-styleの利用は仮想DOMのパフォーマンスに悪影響があるかも(by <a href="https://github.com/petehunt/jsxstyle#the-problem-with-vjeuxs-solution" target="_blank"> @petehunt </a>)
-</li>
+  <li>:hoverやメディアクエリにはライブラリ毎に記法が異なる</li>
 </ul>
 
 </div>

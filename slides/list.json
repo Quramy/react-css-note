@@ -26,9 +26,10 @@
     "030_css_in_js/libs.md",
     "030_css_in_js/libs-comparison.md",
     [
-        "030_css_in_js/radium-sample010-html.html",
-        "030_css_in_js/radium-sample020-md.md",
-        "030_css_in_js/radium-sample030.md"
+        "030_css_in_js/radium_sample010.html",
+        "030_css_in_js/radium_sample020.md",
+        "030_css_in_js/radium_sample030.md",
+        "030_css_in_js/radium_sample040.md"
     ],
     "040_css_modules/title.md",
     "040_css_modules/intro.md",
@@ -45,7 +46,9 @@
         "040_css_modules/with-webpack.md"
     ],
     "040_css_modules/composes.md",
-    "040_css_modules/postcss-with-ejb.md",
+    "040_css_modules/variable.md",
+    "040_css_modules/postcss-with-ejb.html",
+    "050_summary/title.md",
     "050_summary/which.md",
     "050_summary/which_020.md",
     "050_summary/both-you-can-choose.md",
