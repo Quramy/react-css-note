@@ -166,15 +166,28 @@ Vue.js:
                         <section>
                             
                                 
-    <section><h2>Thinking with sample</h2>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Thinking with example
 
-<p>&quot;Card&quot; Component&#x3092;&#x8003;&#x3048;&#x3066;&#x307F;&#x308B;:</p>
+`Card` Componentを作ってみる
 
-<div>
-<iframe src="./resources/demo/0.0_global/index.html" frameborder="0" height="330px">
-</iframe>
-</div>
-</section>
+```js
+import React from "react";
+import {render} from "react-dom";
+import {Card} from "./card";
+
+const title = "React and CSS";
+
+render((
+  <div>
+    <Card title={title}>Hello, card component!</Card>
+    <Card title={title} primary={true}>Hello, primary card!</Card>
+  </div>
+), document.getElementById("app"));
+```
+
+* propsにtitleとprimaryを渡せる
+* childrenが子要素にrenderされる
+</script></section>
 
 
                             
@@ -198,29 +211,6 @@ export class Card extends React.Component {
     );
   }
 }
-```
-</script></section>
-
-
-                            
-                                
-    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Create component with JSX
-
-Card Componentの利用:
-
-```js
-import React from "react";
-import {render} from "react-dom";
-import {Card} from "./card";
-
-const title = "React and CSS";
-
-render((
-  <div>
-    <Card title={title}>Hello, card component!</Card>
-    <Card title={title} primary={true}>Hello, primary card!</Card>
-  </div>
-), document.getElementById("app"));
 ```
 </script></section>
 
@@ -263,9 +253,21 @@ CSSはこんな感じ？
                 
                     
                         
-    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## ...Done ?
+    <section><h3>It&apos;s complete!</h3>
 
-本当にこれで良いの？
+<div>
+<iframe src="./resources/demo/0.0_global/index.html" frameborder="0" style="height:330px">
+</iframe>
+</div>
+</section>
+
+
+                    
+                    
+                
+                    
+                        
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">...本当にこれで良いのか？
 </script></section>
 
 
@@ -274,9 +276,9 @@ CSSはこんな感じ？
                 
                     
                         
-    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## CSS is so fragile
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### CSS is so fragile
 
-スタイル定義は容易に破壊され得る
+スタイル定義は外から簡単に破壊できてしまう
 
 ```css
 .card {
@@ -343,18 +345,51 @@ function renderCard() {
                     
                         
     <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
-React.Componentを使っただけでは <br>
-**"適切にカプセル化"**される訳ではない
+ここまでの結論:
+
+React.Componentを使っただけで <br>
+**CSSが"適切にカプセル化"**される訳ではない
+</script></section>
 
 
-<span style="font-size:larger">CSSもカプセル化する必要がある</span>
+                    
+                    
+                
+                    
+                        
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+CSSがglobalであることが最大の問題
+</script></section>
 
-### Localize CSS scope
 
-* ~~CSS命名規約(e.g. BEM, SUIT)~~
-* ~~Web Components(Shadow DOM)~~
-* CSS in JS
-* CSS Modules
+                    
+                    
+                
+                    
+                        
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Weapon of choice ?
+
+CSSのGlobal性と戦うための武器:
+
+<ul class="good">
+  <li>CSS 命名規約(e.g. BEM)</li>
+  <li>Web Components(Shadow DOM)</li>
+  <li>**CSS in JS**</li>
+  <li>**CSS Modules**</li>
+</ul>
+
+<p class="smaller">
+  今回はCSS in JSとCSS Modulesを中心に紹介
+</p>
+</script></section>
+
+
+                    
+                    
+                
+                    
+                        
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## CSS in JS
 </script></section>
 
 
@@ -479,9 +514,9 @@ export const primaryRoot = Object.assign({}, root, {
                 
                     
                         
-    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## Cons
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Cons of inline-style
 
-inline styleに展開するため、下記が利用できない
+inline styleに展開する場合、下記が利用できない
 
 <ul class="bad">
   <li>擬似要素セレクタ(e.g. `::before`)</li>
@@ -621,7 +656,43 @@ export class AnimatedCircle extends React.Component {
 
 
                             
+                                
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Component with Radium
+
+```js
+import React from "react";
+import Radium from "radium";
+
+@Radium
+export class AnimatedCircle extends React.Component {
+  render() {
+    const { delay } = this.props;
+    return (
+      <div style={[styles.root, animation(delay)]}>
+        <div style={styles.movable}>
+          <div style={styles.circle}></div>
+        </div>
+      </div>
+    );
+  }
+}
+```
+
+* Class Decorators(ES.next) を ComponentのClassに付与
+</script></section>
+
+
+                            
                         </section>
+                    
+                
+                    
+                        
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## CSS Modules
+</script></section>
+
+
+                    
                     
                 
                     

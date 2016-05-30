@@ -1,6 +1,6 @@
-## CSS is so fragile
+### CSS is so fragile
 
-スタイル定義は容易に破壊され得る
+スタイル定義は外から簡単に破壊できてしまう
 
 ```css
 .card {
