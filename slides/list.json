@@ -54,6 +54,10 @@
     "050_summary/both-you-can-choose.md",
     "050_summary/thank-you.md",
     "999_appendix/title.md",
-    "999_appendix/is-bem-dead.md",
-    "999_appendix/with-typescript.md"
+    [
+      "999_appendix/with-typescript.md",
+      "999_appendix/with-typescript020.md",
+      "999_appendix/with-typescript030.html"
+    ],
+    "999_appendix/is-bem-dead.md"
 ]
