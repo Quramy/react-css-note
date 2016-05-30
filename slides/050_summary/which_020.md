@@ -1,6 +1,6 @@
 
-<div style="display:flex">
-<div style="flex:1; font-size:0.75em;">
+<div class="compare">
+<div class="content" style="font-size:0.75em;">
 <h3>CSS in JS</h4>
 
 <ul class="good">
@@ -16,7 +16,7 @@
 
 <div style="width:30px"></div>
 
-<div style="flex:1; font-size:0.75em;">
+<div class="content" style="font-size:0.75em;">
 <h3>CSS Modules</h4>
 
 <ul class="good">
@@ -24,7 +24,7 @@
   <li>JavaScript以外の言語からも利用しやすい</li>
 </ul>
 <ul class="bad">
-  <li>Module bundler pluginが必須. ビルドスクリプトが面倒</li>
+  <li>Module bundler pluginやpostcss pluginによる変換が必須</li>
 </ul>
 
 </div>

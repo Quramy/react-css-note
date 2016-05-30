@@ -6,8 +6,8 @@
 <a href="https://github.com/css-modules/postcss-modules" target="_blank">css-modules/postcss-modules</a> を利用することで<br>CSS Modulesの事前変換が可能
 </p>
 
-<div style="display:flex;font-size: 0.8em;align-items:center;">
-<div style="flex:1">
+<div class="compare --center" style="font-size: 0.8em">
+<div class="content">
 <pre><code data-trim data-noescape>/* styles.css */
 .myClass {
   color:red;
@@ -15,11 +15,9 @@
 </code></pre>
 </div>
 
-<p>
-<span class="fa fa-arrow-right" style="font-size:50px"></span>
-</p>
+<p><span class="fa fa-arrow-right" style="font-size:50px"></span></p>
 
-<div style="flex:1">
+<div class="content">
 <pre><code data-trim data-noescape>/* converted_styles.css */
 ._myClass_xxx_yyy {
   color:red;
@@ -31,4 +29,4 @@
 </div>
 </div>
 
-<p class="smaller">出力されたjsonから対応関係を参照することで<br>他言語(e.g. Rails)からもCSS Modulesを利用できる</p>
+<p class="smaller">出力されたjsonから対応関係を参照することで<br>他言語(e.g. Ruby)からもCSS Modulesを利用できる</p>

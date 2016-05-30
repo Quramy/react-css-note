@@ -147,3 +147,18 @@ $heading4Size: 1.00em;
     color: $magenta;
   }
 }
+
+.reveal .compare {
+  display: flex;
+  .content {
+    flex: 1;
+    -webkit-flex:1;
+    -ms-flex:1;
+  }
+  &.--top {
+    align-items: flex-start;
+  }
+  &.--center {
+    align-items: center;
+  }
+}
