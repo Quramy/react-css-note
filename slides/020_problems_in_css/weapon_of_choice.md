@@ -1,4 +1,4 @@
-### Weapon of choice ?
+### Weapon of Choice ?
 
 CSSのGlobal性と戦うための武器:
 

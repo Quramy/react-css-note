@@ -1,4 +1,4 @@
-props.childrenが破壊されるケース:
+* ComponentのCSSが子要素を破壊する例:
 
 ```css
 /* Card Componentの内部利用のために定義された CSS Class */
@@ -26,7 +26,7 @@ function renderCard() {
   <header class="title"></header>
   <div>
     <sectoin class="sub">
-      <!-- Cardが内部的に使っている .card .title のスタイルが適用されてしまう -->
+      <!-- Cardが内部的に使っている .card .title のルールが適用されてしまう -->
       <header class="title">sub title</header>
     </sectoin>
   </div>

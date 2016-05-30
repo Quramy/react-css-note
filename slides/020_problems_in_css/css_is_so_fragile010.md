@@ -1,6 +1,8 @@
 ### CSS is so fragile
 
-スタイル定義は外から簡単に破壊できてしまう
+Style定義はとても壊れやすい
+
+* 外部からComponentのCSSを破壊する例:
 
 ```css
 .card {
