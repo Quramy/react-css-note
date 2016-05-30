@@ -17,7 +17,7 @@
   <li>
 Vue.js:
 <span class="smaller">
-  `View.extend(...)`
+  `Vue.component(...)`
 </span>
 </li>
 <li class="no-mark">and more...</li>
