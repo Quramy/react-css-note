@@ -413,8 +413,7 @@ Christopher Chedeau &#x304C;2014&#x5E74;&#x306B;&#x767A;&#x8868;<br>
                 
                     
                         
-    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
-CSS in JSではStyleとなるオブジェクトを直接JSで記述する.
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">CSS in JSではStyleとなるオブジェクトを直接JSで記述する.
 
 ```js
 /* CardStyles.js */
@@ -427,7 +426,7 @@ export const root = {
   marginBottom: "30px",
 };
 
-:
+// 以下略
 ```
 
 ```js
@@ -542,7 +541,7 @@ inline styleに展開する場合、下記が利用できない
     2016年5月現在, 最も人気のあるCSS in JSライブラリ (~3,000 <span class="fa fa-star"></span>)
   </p>
   <p class="smaller">
-    `h:over`等、いくつかの擬似クラスセレクタをサポート
+    `:hover`等、いくつかの擬似クラスセレクタをサポート
   </p>
 </li>
 <li>
@@ -767,18 +766,18 @@ CSS Modulesは従来通り.cssを.jsから利用する
 CSS Modulesでは定義されたClassがES 2015 Modulesのように振る舞う
 
 ```css
-/* MyClass.css */
-.MyClass { color: red; }
+/* Card.css */
+.title { font-weight: bold; }
 ```
 
 ```js
-/* MyClass.js */
-export class MyClass {...}
+/* Card.js */
+export const title = "...";
 ```
 
 <ul class="good">
-  <li> `MyClass`を利用する際は明示的に`import`する </li>
-  <li>他のファイルに同名の`MyClass` が定義されていても干渉しない</li>
+  <li> `title`を利用する際は明示的に`import`する </li>
+  <li>他のファイルに同名の`title` が定義されていても干渉しない</li>
 </ul>
 </script></section>
 
@@ -1126,7 +1125,7 @@ CSS in JSとCSS Modules, どっちを使えばいいの？
     <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown"># Thank you!
 
 <p class="smaller">
-  <a href="https://github.com/Quramy/react-css-note"><span class="fa fa-github"></span> https://github.com/Quramy/react-css-note</a>
+  <a href="https://github.com/Quramy/react-css-note" target="_blank"><span class="fa fa-github"></span> https://github.com/Quramy/react-css-note</a>
 </p>
 </script></section>
 
