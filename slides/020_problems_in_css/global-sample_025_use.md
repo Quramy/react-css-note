@@ -1,6 +1,6 @@
-### Create component with JSX
+### Thinking with example
 
-Card Componentの利用:
+`Card` Componentを作ってみる
 
 ```js
 import React from "react";
@@ -16,3 +16,6 @@ render((
   </div>
 ), document.getElementById("app"));
 ```
+
+* propsにtitleとprimaryを渡せる
+* childrenが子要素にrenderされる

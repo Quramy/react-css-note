@@ -1,5 +1,5 @@
 
-JavaScriptの関数を使えば、Styleの合成も簡単。
+JavaScriptの関数を使えば、Styleの合成も容易
 
 ```js
 export const root = {
