@@ -6,8 +6,8 @@
 
         <title>How to style React components</title>
 
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
@@ -46,7 +46,13 @@
                 
                     
                         
-    <section data-markdown="slides/title.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+<h1>
+How to style <br> React Components
+</h1>
+
+by @Quramy 2016.05.31
+</script></section>
 
 
                     
@@ -54,7 +60,25 @@
                 
                     
                         
-    <section data-markdown="slides/010_intro/about-me.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">##  About me
+
+倉見 洋輔 @Quramy
+<a href="https://twitter.com/quramy" style="color:inherit;font-size:larger" target="_blank"><span class="fa fa-twitter-square"></span> </a>
+<a href="https://github.com/Quramy" style="color:inherit;font-size:larger" target="_blank"><span class="fa fa-github-square"></span></a>
+
+<img src="./resources/images/myProf.png" alt="" class="no-frame" style="width:120px">
+
+<p class="smaller">
+株式会社WACUL所属のフロントエンジニア
+<a href=""></a>
+</p>
+<p class="smaller">
+
+<a href="https://wacul-ai.com" target="_blank">メインサービス</a>の開発ではAngularを使っていますが、<br>
+社内向けのツール等でReactも使っています
+</p>
+
+</script></section>
 
 
                     
@@ -62,7 +86,15 @@
                 
                     
                         
-    <section data-markdown="slides/010_intro/agenda.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## Agenda
+
+* UI ComponentにおけるCSSの問題点
+* 解決方法1: CSS in JS
+* 解決方法2: CSS Modules
+* まとめ
+* <span class="smaller">おまけ(時間があれば)</span>
+
+</script></section>
 
 
                     
@@ -70,7 +102,27 @@
                 
                     
                         
-    <section data-markdown="slides/020_problems_in_css/why-component.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## What's Component ?
+
+**UI Component** と呼ばれる物の特徴:
+
+<ul class="good">
+  <li>
+    見た目と振る舞いがまとめて提供されている
+  </li>
+  <li>
+    適度にカプセル化されている
+  </li>
+  <li>
+    再利用性が高い
+  </li>
+  <li>
+    保守しやすい
+  </li>
+<li class="no-mark smaller"><span class="smaller">etc...</span></li>
+</ul>
+
+</script></section>
 
 
                     
@@ -78,7 +130,32 @@
                 
                     
                         
-    <section data-markdown="slides/020_problems_in_css/component.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">##  How to create Component?
+
+多くのJS FrameworkがUI Componentの開発をサポート
+
+<ul class="good">
+  <li>
+   **React**:
+<span class="smaller">
+  `React.Component`
+</span>
+</li>
+  <li>AngularJS:
+<span class="smaller">
+  `angular.module(...).component(...)`
+</span>
+</li>
+  <li>
+Vue.js:
+<span class="smaller">
+  `View.extend(...)`
+</span>
+</li>
+<li class="no-mark">and more...</li>
+</ul>
+
+</script></section>
 
 
                     
@@ -89,22 +166,95 @@
                         <section>
                             
                                 
-    <section data-html="slides/020_problems_in_css/global-sample_030_demo.html"></section>
+    <section><h2>Thinking with sample</h2>
+
+<p>&quot;Card&quot; Component&#x3092;&#x8003;&#x3048;&#x3066;&#x307F;&#x308B;:</p>
+
+<div>
+<iframe src="./resources/demo/0.0_global/index.html" frameborder="0" height="330px">
+</iframe>
+</div>
+</section>
 
 
                             
                                 
-    <section data-markdown="slides/020_problems_in_css/global-sample_020_jsx.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Create component with JSX
+
+React.Component を使ってComponentを作る:
+
+```js
+import React from "react";
+import cx from "classnames";
+
+export class Card extends React.Component {
+  render() {
+    const {title, primary, children} = this.props;
+    return (
+      <div className={cx('card', {primary: primary})} >
+         <header className="title">{title}</header>
+         <div className="body">{children}</div>
+      </div>
+    );
+  }
+}
+```
+</script></section>
 
 
                             
                                 
-    <section data-markdown="slides/020_problems_in_css/global-sample_025_use.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Create component with JSX
+
+Card Componentの利用:
+
+```js
+import React from "react";
+import {render} from "react-dom";
+import {Card} from "./card";
+
+const title = "React and CSS";
+
+render((
+  <div>
+    <Card title={title}>Hello, card component!</Card>
+    <Card title={title} primary={true}>Hello, primary card!</Card>
+  </div>
+), document.getElementById("app"));
+```
+</script></section>
 
 
                             
                                 
-    <section data-markdown="slides/020_problems_in_css/global-sample_010_css.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Write CSS
+
+CSSはこんな感じ？
+
+```css
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #f0f2fb;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
+  margin-bottom: 30px;
+}
+.card .title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card.primary {
+  background-color: #62c4a4;
+  border: none;
+  color: white;
+}
+.card.primary .title {
+  font-weight: bold;
+}
+```
+</script></section>
 
 
                             
@@ -113,7 +263,10 @@
                 
                     
                         
-    <section data-markdown="slides/020_problems_in_css/it-is-not-component.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## ...Done ?
+
+本当にこれで良いの？
+</script></section>
 
 
                     
@@ -121,7 +274,25 @@
                 
                     
                         
-    <section data-markdown="slides/020_problems_in_css/global-evil.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## CSS is so fragile
+
+スタイル定義は容易に破壊され得る
+
+```css
+.card {
+  background-color: #fff;
+  padding: 20px;
+  /** 中略 **/
+}
+```
+
+```css
+/** これを追記すると... **/
+div .card {
+  background-color: red;
+}
+```
+</script></section>
 
 
                     
@@ -129,7 +300,41 @@
                 
                     
                         
-    <section data-markdown="slides/020_problems_in_css/global-evil15.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">props.childrenが破壊されるケース:
+
+```css
+/* Card Componentの内部利用のために定義された CSS Class */
+.card .title { font-size: 20px; }
+```
+
+```js
+// Card Componentの利用コード
+import { Card } from "./Card";
+function renderCard() {
+  return (
+    <Card>
+      <sectoin className="sub">
+        {/* 利用者側はCardがtitleというclass名を使っていることを知らない */}
+        <div className="title">sub title</div>
+      </sectoin>
+    </Card>
+  );
+}
+```
+
+```html
+<!-- 出力されるDOM -->
+<div class="card">
+  <header class="title"></header>
+  <div>
+    <sectoin class="sub">
+      <!-- Cardが内部的に使っている .card .title のスタイルが適用されてしまう -->
+      <header class="title">sub title</header>
+    </sectoin>
+  </div>
+</div>
+```
+</script></section>
 
 
                     
@@ -137,7 +342,20 @@
                 
                     
                         
-    <section data-markdown="slides/020_problems_in_css/global-evil2.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+React.Componentを使っただけでは <br>
+**"適切にカプセル化"**される訳ではない
+
+
+<span style="font-size:larger">CSSもカプセル化する必要がある</span>
+
+### Localize CSS scope
+
+* ~~CSS命名規約(e.g. BEM, SUIT)~~
+* ~~Web Components(Shadow DOM)~~
+* CSS in JS
+* CSS Modules
+</script></section>
 
 
                     
@@ -145,7 +363,14 @@
                 
                     
                         
-    <section data-html="slides/030_css_in_js/intro.html"></section>
+    <section><h2>CSS in JS</h2>
+
+Christopher Chedeau &#x304C;2014&#x5E74;&#x306B;&#x767A;&#x8868;<br>
+<a href="https://speakerdeck.com/vjeux/react-css-in-js" target="_blank">React: CSS in JS</a> &#x3067;&#x4E00;&#x8E8D;&#x8A71;&#x984C;&#x306B;
+
+<img src="./resources/images/capt_css_in_js.png" alt="" style="width:50%">
+
+</section>
 
 
                     
@@ -153,7 +378,42 @@
                 
                     
                         
-    <section data-markdown="slides/030_css_in_js/styles-as-js.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+CSS in JSではStyleとなるオブジェクトを直接JSで記述する.
+
+```js
+/* CardStyles.js */
+export const root = {
+  backgroundColor: "#fff",
+  padding: "20px",
+  border: "1px solid #f0f2fb",
+  borderRadius: "3px",
+  boxShadow: "0 2px 5px 0 rgba(0,0,0,0.16)",
+  marginBottom: "30px",
+};
+
+:
+```
+
+```js
+/* Card.js */
+import React from "react";
+import * as st from "./CardStyles";
+
+export class Card extends React.Component {
+  render() {
+    const {title, primary, children} = this.props;
+    return (
+      { /* inline style に展開される */ }
+      <div style={primary ? st.primaryRoot : st.root}>
+        <header style={primary ? st.primaryTitle : st.title}>{title}</header>
+        <div>{children}</div>
+      </div>
+    );
+  }
+}
+```
+</script></section>
 
 
                     
@@ -161,7 +421,10 @@
                 
                     
                         
-    <section data-markdown="slides/030_css_in_js/how-to-localize.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+CSS class名を介さずにinline-styleを利用することで, <br>
+StyleをComponentに閉じ込めることができる
+</script></section>
 
 
                     
@@ -169,7 +432,26 @@
                 
                     
                         
-    <section data-markdown="slides/030_css_in_js/styles-extend-assign.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+JavaScriptの関数を使えば、Styleの合成も簡単。
+
+```js
+export const root = {
+  backgroundColor: "#fff",
+  padding: "20px",
+  border: "1px solid #f0f2fb",
+  borderRadius: "3px",
+  boxShadow: "0 2px 5px 0 rgba(0,0,0,0.16)",
+  marginBottom: "30px",
+};
+
+export const primaryRoot = Object.assign({}, root, {
+  backgroundColor: "#62c4a4",
+  border: "none",
+  color: "white",
+});
+```
+</script></section>
 
 
                     
@@ -177,7 +459,19 @@
                 
                     
                         
-    <section data-markdown="slides/030_css_in_js/styles-extend-other-pros.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+### Other pros
+
+スタイルを.jsで管理するメリット:
+
+<ul class="good">
+  <li>プロジェクトで共有する変数も.jsで共有可能</li>
+  <li>不要コード検出(e.g. [eslint: no-unused-vars](http://eslint.org/docs/rules/no-unused-vars))</li>
+  <li>動的ロード(e.g. [SystemJS](https://github.com/systemjs/systemjs))</li>
+  <li class="no-mark"><span class="smaller">and more...</span></li>
+</ul>
+
+</script></section>
 
 
                     
@@ -185,7 +479,18 @@
                 
                     
                         
-    <section data-markdown="slides/030_css_in_js/cons.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## Cons
+
+inline styleに展開するため、下記が利用できない
+
+<ul class="bad">
+  <li>擬似要素セレクタ(e.g. `::before`)</li>
+  <li>擬似クラスセレクタ(e.g. `:hover`)</li>
+  <li>メディアクエリ</li>
+  <li>@keyframes</li>
+</ul>
+
+</script></section>
 
 
                     
@@ -193,7 +498,32 @@
                 
                     
                         
-    <section data-markdown="slides/030_css_in_js/libs.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+### Major tools in CSS in JS
+<ul class="good">
+<li>
+  <a href="https://github.com/FormidableLabs/radium/blob/master/docs/comparison/README.md" target="_blank">FormidableLabs/radium</a>:
+  <p class="smaller">
+    2016年5月現在, 最も人気のあるCSS in JSライブラリ (~3,000 <span class="fa fa-star"></span>)
+  </p>
+  <p class="smaller">
+    `h:over`等、いくつかの擬似クラスセレクタをサポート
+  </p>
+</li>
+<li>
+  <a href="https://github.com/js-next/react-style" target="_blank">js-next/react-style</a>:
+  <p class="smaller" >
+    React Nativeのように`StyleSheet.create` を使ってjsからStyleSheetを生成
+  </p>
+</li>
+<li>
+  <a href="https://github.com/petehunt/jsxstyle" target="_blank">petehunt/jsxstyle</a>:
+  <p class="smaller">
+    `style`やComponent名(`Flex`等)を静的解析して.cssを生成
+  </p>
+</li>
+</ul>
+</script></section>
 
 
                     
@@ -201,7 +531,15 @@
                 
                     
                         
-    <section data-markdown="slides/030_css_in_js/libs-comparison.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+参考: React + CSS in JS の主要なツールの比較:
+
+<img src="./resources/images/capt_css_in_js_tools_comparison.png" alt="">
+
+<p>
+  <a class="link smaller" href="https://github.com/FormidableLabs/radium/blob/master/docs/comparison/" target="_blank">https://github.com/FormidableLabs/radium/blob/master/docs/comparison/</a>
+</p>
+</script></section>
 
 
                     
@@ -212,12 +550,74 @@
                         <section>
                             
                                 
-    <section data-html="slides/030_css_in_js/radium-sample010-html.html"></section>
+    <section><h2>Example of Radium</h2>
+
+<p>
+  Example of keyframes animation with Radium
+</p>
+
+<iframe src="./resources/demo/3.2_css-in-js_radium/index.html" frameborder="0" style="height:270px"></iframe>
+
+<p class="smaller"><span class="fa fa-lightbulb-o"></span> Chrome&#x306E;&#x958B;&#x767A;&#x8005;&#x30C4;&#x30FC;&#x30EB;&#x3067;style&#x5C5E;&#x6027;&#x3092;&#x898B;&#x3066;&#x307F;&#x3088;&#x3046;</p>
+</section>
 
 
                             
                                 
-    <section data-markdown="slides/030_css_in_js/radium-sample020-md.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">##  css-in-js-radium-sample020.md
+
+
+```js
+import React from "react";
+import Radium from "radium";
+
+const height = "50px";
+const styles = {
+  root: {
+    position: "relative",
+    width: "100%", height,
+    marginBottom: "15px",
+    ":hover": {
+      opacity: 0.6,
+    },
+  },
+  movable: {
+    position: "absolute",
+    width: "100%",
+    top: 0, bottom: 0,
+  },
+  circle: {
+    backgroundColor: "#62c4a4",
+    width: height, height,
+    borderRadius: "25px",
+  }
+};
+
+const translationKeyframes = Radium.keyframes({
+  "0%":   {transform: "translateX(0%)"},
+  "50%":  {transform: "translateX(100%)"},
+  "100%": {transform: "translateX(0%)"},
+}, "pulse");
+const animation = (delay) =>({
+  animation: `x 2.5s ease ${delay} infinite`,
+  animationName: translationKeyframes,
+});
+
+@Radium
+export class AnimatedCircle extends React.Component {
+  render() {
+    const { delay } = this.props;
+    return (
+      <div style={[styles.root, animation(delay)]}>
+        <div style={styles.movable}>
+          <div style={styles.circle}></div>
+        </div>
+      </div>
+    );
+  }
+}
+```
+</script></section>
 
 
                             
@@ -226,7 +626,22 @@
                 
                     
                         
-    <section data-markdown="slides/040_css_modules/intro.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## CSS Modules
+
+Glen Maddern が2015年に提唱
+
+<blockquote>
+<p class="smaller">
+  Just look at the range of approaches to handling :hover states among the projects I referenced earlier, something that has been solved in CSS for a long time. <br/ >
+  So, while we’re bullish about our approach and firmly defend the virtues of CSS .
+</p>
+</blockquote>
+
+<p class="smaller">
+  <a class="link" href="http://glenmaddern.com/articles/css-modules" target="_blank">http://glenmaddern.com/articles/css-modules</a>
+</p>
+
+</script></section>
 
 
                     
@@ -234,7 +649,12 @@
                 
                     
                         
-    <section data-markdown="slides/040_css_modules/approach.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+CSS in JSが.jsでstyleを生成するのに対して <br>
+CSS Modulesは従来通り.cssを.jsから利用する
+
+<img class="no-frame" src="./resources/images/approach_comparison.png" alt="">
+</script></section>
 
 
                     
@@ -242,7 +662,25 @@
                 
                     
                         
-    <section data-markdown="slides/040_css_modules/how-to-localize.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Local scoped by default
+
+CSS Modulesでは定義されたClassがES 2015 Modulesのように振る舞う
+
+```css
+/* MyClass.css */
+.MyClass { color: red; }
+```
+
+```js
+/* MyClass.js */
+export class MyClass {...}
+```
+
+<ul class="good">
+  <li> `MyClass`を利用する際は明示的に`import`する </li>
+  <li>他のファイルに同名の`MyClass` が定義されていても干渉しない</li>
+</ul>
+</script></section>
 
 
                     
@@ -253,17 +691,61 @@
                         <section>
                             
                                 
-    <section data-markdown="slides/040_css_modules/basic010.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### How to use CSS Modules
+
+冒頭のCard ComponentをCSS Modulesで書き換えてみる
+
+```css
+/* src/Card.css */
+.root {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #f0f2fb;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
+  margin-bottom: 30px;
+}
+:
+```
+
+```js
+/* src/Card.js */
+import React from "react";
+import * as st from "./Card.css"; // .cssからimport
+
+export class Card extends React.Component {
+  render() {
+    const {title, children} = this.props;
+    return (
+      <div className={st.root} > {/* class名がexportされている */}
+         <header className={st.title}>{title}</header>
+         <div>{children}</div>
+      </div>
+    );
+  }
+}
+```
+</script></section>
 
 
                             
                                 
-    <section data-markdown="slides/040_css_modules/basic020.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+<iframe src="./resources/demo/4.0_css-modules_basic/" style="height:330px"></iframe>
+
+RenderingされたDOMを開発者ツールで見てみると...
+
+</script></section>
 
 
                             
                                 
-    <section data-markdown="slides/040_css_modules/basic030.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+CSS Class名が書き換えられているのが確認できる
+
+<img src="./resources/images/capt_css_modules_chrome.png" style="width:140%">
+
+</script></section>
 
 
                             
@@ -275,17 +757,82 @@
                         <section>
                             
                                 
-    <section data-markdown="slides/040_css_modules/using-module-bundler.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### You need module bundler
+
+CSS ModulesではModule bundlerのプラグインが必須.
+
+* .cssファイルのClass名を書き換えてglobalな名前が分からないようにする
+* 同時に.jsで利用するkeyと実クラス名の紐付け情報を作成してModule bundlerに引き渡す
+
+```js
+/* CSS Modules pluginが生成するmoduleイメージ */
+module.exports = {
+  "root": "_root_gub7p_1",
+  :
+};
+```
+</script></section>
 
 
                             
                                 
-    <section data-markdown="slides/040_css_modules/with-browserify.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### With Browserify
+
+<a href="https://github.com/css-modules/css-modulesify" target="_blank">css-modules/css-modulesify</a> pluginが利用可能
+
+```sh
+npm i browserify babelify css-modulesify
+
+browserify \
+  -t [ babelify ] \
+  -p [ css-modulesify -d dist/bundle.css ] \
+  -d dist/bundle.js
+```
+
+<p class="smaller">
+  `NODE_ENV` の値によって, 生成されるCSS Class名が異なる:
+</p>
+<ul>
+  <li>
+    <p class="smaller">デフォルト: prefixにlocal file pathが付与される</p>
+  </li>
+  <li>
+    <p class="smaller">production: suffixにfile hash付与される<br></p>
+  </li>
+</ul>
+
+</script></section>
 
 
                             
                                 
-    <section data-markdown="slides/040_css_modules/with-webpack.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### With webpack
+
+<p class="smaller">
+  webpack公式の<a href="https://github.com/webpack/css-loader#css-modules" target="_blank">css-loader</a>から利用可能 <br>
+`modules` オプションでCSS Modulesとして解釈されるようになる
+</p>
+
+
+```js
+var path = require('path');
+module.exports = {
+  module: {
+    loaders: [
+      { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] },
+      // postcssと併用する場合, importLoaders=1が必須
+      { test: /\.css$/, loaders: ['style', 'css?modules&importLoaders=1', 'postcss'] },
+    ],
+  },
+  postcss: [
+    require('autoprefixer'),
+  ],
+  entry: './src/index.js',
+  output: { path: path.resolve('dist'), filename: 'bundle.js' },
+  resolve: { extensions: ['', '.js'] },
+};
+```
+</script></section>
 
 
                             
@@ -294,7 +841,35 @@
                 
                     
                         
-    <section data-markdown="slides/040_css_modules/composes.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Class composition
+
+`composes` キーワードでCSS Class同士の合成が可能
+
+(Sassの@extend, CSS @apply rule相当)
+
+```css
+/* util.css */
+.large {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+```
+
+```css
+/* Card.css */
+.title {
+  composes: large from './util.css';
+  font-weight: bold;
+}
+```
+
+```js
+/* generated module of Card.css */
+module.exports = {
+  "title": "title_xxx_yyy large_zzz_www"
+}
+```
+</script></section>
 
 
                     
@@ -302,7 +877,10 @@
                 
                     
                         
-    <section data-markdown="slides/040_css_modules/postcss-with-ejb.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">##  css-modules-postcss-with-ejb
+
+This is a new Markdown slide
+</script></section>
 
 
                     
@@ -310,7 +888,10 @@
                 
                     
                         
-    <section data-markdown="slides/050_summary/which.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## Which tools do I use ?
+
+CSS in JSとCSS Modules, どっちを使えばいいの？
+</script></section>
 
 
                     
@@ -318,7 +899,39 @@
                 
                     
                         
-    <section data-markdown="slides/050_summary/which_020.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
+<div style="display:flex">
+<div style="flex:1; font-size:0.75em;">
+<h3>CSS in JS</h4>
+
+<ul class="good">
+  <li>単一のJSファイルにテンプレート(JSX)とStyle定義を記述できる</li>
+</ul>
+
+<ul class="bad">
+  <li>h:overやメディアクエリにはライブラリ毎に記法が異なる</li>
+  <li>inline-styleの利用は仮想DOMのパフォーマンスに悪影響があるかも(by <a href="https://github.com/petehunt/jsxstyle#the-problem-with-vjeuxs-solution" target="_blank"> @petehunt </a>)
+</li>
+</ul>
+
+</div>
+
+<div style="width:30px"></div>
+
+<div style="flex:1; font-size:0.75em;">
+<h3>CSS Modules</h4>
+
+<ul class="good">
+  <li>CSS記法がそのまま利用できる</li>
+  <li>JavaScript以外の言語からも利用しやすい</li>
+</ul>
+<ul class="bad">
+  <li>Module bundler pluginが必須. ビルドスクリプトが面倒</li>
+</ul>
+
+</div>
+</div>
+</script></section>
 
 
                     
@@ -326,7 +939,13 @@
                 
                     
                         
-    <section data-markdown="slides/050_summary/both-you-can-choose.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## You can use both
+
+現状、優劣は付け難い
+
+「styleを.jsで書きたいか」 「styleを.cssで書きたいか」 <br>
+天秤に掛けて決めましょう
+</script></section>
 
 
                     
@@ -334,7 +953,8 @@
                 
                     
                         
-    <section data-markdown="slides/050_summary/thank-you.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown"># Thank you!
+</script></section>
 
 
                     
@@ -342,7 +962,8 @@
                 
                     
                         
-    <section data-markdown="slides/999_appendix/title.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">## Aappendix
+</script></section>
 
 
                     
@@ -350,7 +971,15 @@
                 
                     
                         
-    <section data-markdown="slides/999_appendix/is-bem-dead.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### Is BEM dead?
+
+BEM(Block Element Modifier)について:
+
+* 新しいプロジェクトで積極的に採用する必然性は低い
+* CSS in JSやCSS Modulesが肩代わりしてくれるのは"B"の部分だけ
+* localなsytleやClassが"Element" or "Modifier"のどちらであるのか、命名規約を持っておくのは良いこと
+
+</script></section>
 
 
                     
@@ -358,7 +987,11 @@
                 
                     
                         
-    <section data-markdown="slides/999_appendix/with-typescript.md"></section>
+    <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">### With TypeScript
+
+* TypeScript 1.6以降ではJSXのコンパイルがサポートされている (`tsc --jsx=react`)
+* Component名, Props名をCompile Checkしてくれる
+</script></section>
 
 
                     
