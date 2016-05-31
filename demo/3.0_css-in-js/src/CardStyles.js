@@ -8,7 +8,7 @@ export const root = {
 };
 
 export const title = {
-  fontSize: "20px",
+  fontSize: "18pt",
   marginBottom: "10px",
 };
 

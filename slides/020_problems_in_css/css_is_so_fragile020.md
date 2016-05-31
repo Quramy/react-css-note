@@ -2,7 +2,7 @@
 
 ```css
 /* Card Componentの内部利用のために定義された CSS Class */
-.card .title { font-size: 20px; }
+.card .title { font-size: 18pt; }
 ```
 
 ```js

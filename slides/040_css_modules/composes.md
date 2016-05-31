@@ -7,7 +7,7 @@
 ```css
 /* util.css */
 .large {
-  font-size: 20px;
+  font-size: 18pt;
   margin-bottom: 10px;
 }
 ```
