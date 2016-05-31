@@ -6,7 +6,7 @@
   <li>
    **React**:
 <span class="smaller">
-  `React.Component`
+  Stateless Function , `React.Component`
 </span>
 </li>
   <li>AngularJS:
