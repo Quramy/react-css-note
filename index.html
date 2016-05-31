@@ -231,7 +231,7 @@ CSSはこんな感じ？
   margin-bottom: 30px;
 }
 .card .title {
-  font-size: 20px;
+  font-size: 18pt;
   margin-bottom: 10px;
 }
 
@@ -308,7 +308,7 @@ div .card {
 
 ```css
 /* Card Componentの内部利用のために定義された CSS Class */
-.card .title { font-size: 20px; }
+.card .title { font-size: 18pt; }
 ```
 
 ```js
@@ -432,7 +432,7 @@ export const root = {
 ```
 
 ```js
-/* Card.js */
+/* Card.jsx */
 import React from "react";
 import * as st from "./CardStyles";
 
@@ -752,7 +752,7 @@ Glen Maddern が2015年に提唱
                         
     <section data-markdown="" data-separator="BRBRBR"><script type="template/markdown">
 CSS in JSが.jsでstyleを生成するのに対して <br>
-CSS Modulesは従来通り.cssを.jsから利用する
+CSS Modulesは.cssを.jsから利用する
 
 <img class="no-frame" src="./resources/images/comparison_approach.png" alt="">
 </script></section>
@@ -769,12 +769,12 @@ CSS Modulesでは定義されたClassがES 2015 Modulesのように振る舞う
 
 ```css
 /* Card.css */
-.title { font-weight: bold; }
+.title { font-size: 18pt; }
 ```
 
 ```js
-/* Card.js */
-export const title = "...";
+/* Card.css.js */
+export const title = "title";
 ```
 
 <ul class="good">
@@ -800,17 +800,17 @@ export const title = "...";
 /* src/Card.css */
 .root {
   background-color: #fff;
-  padding: 20px;
-  border: 1px solid #f0f2fb;
-  border-radius: 3px;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
-  margin-bottom: 30px;
+  :
 }
-:
+
+.title {
+  font-size: 18pt;
+  :
+}
 ```
 
 ```js
-/* src/Card.js */
+/* src/Card.jsx */
 import React from "react";
 import * as st from "./Card.css"; // .cssからimport
 
@@ -951,7 +951,7 @@ module.exports = {
 ```css
 /* util.css */
 .large {
-  font-size: 20px;
+  font-size: 18pt;
   margin-bottom: 10px;
 }
 ```

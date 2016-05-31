@@ -6,17 +6,17 @@
 /* src/Card.css */
 .root {
   background-color: #fff;
-  padding: 20px;
-  border: 1px solid #f0f2fb;
-  border-radius: 3px;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
-  margin-bottom: 30px;
+  :
 }
-:
+
+.title {
+  font-size: 18pt;
+  :
+}
 ```
 
 ```js
-/* src/Card.js */
+/* src/Card.jsx */
 import React from "react";
 import * as st from "./Card.css"; // .cssからimport
 

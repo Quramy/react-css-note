@@ -4,12 +4,12 @@ CSS Modulesでは定義されたClassがES 2015 Modulesのように振る舞う
 
 ```css
 /* Card.css */
-.title { font-weight: bold; }
+.title { font-size: 18pt; }
 ```
 
 ```js
-/* Card.js */
-export const title = "...";
+/* Card.css.js */
+export const title = "title";
 ```
 
 <ul class="good">

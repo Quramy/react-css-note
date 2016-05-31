@@ -15,7 +15,7 @@ export const root = {
 ```
 
 ```js
-/* Card.js */
+/* Card.jsx */
 import React from "react";
 import * as st from "./CardStyles";
 
